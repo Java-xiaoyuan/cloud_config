@@ -1,0 +1,28 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: cloud-gateway9527
+  cloud:
+    gateway:
+      routes:
+        - id: Tencent_Sport
+          uri: http://localhost:8001
+          predicates:
+            - Path=/payment/get/**
+
+        - id: Tencent_Sport1
+          uri: https://sports.qq.com/
+          predicates:
+            - Path=/**
+eureka:
+  instance:
+    hostname: cloud-gateWay9527ya
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+
+
